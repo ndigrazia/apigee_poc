@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SharedFlow name="default">
+  <Step>
+    <Name>SC-SanitizePrompt</Name>
+  </Step>
+  <Step>
+    <Name>EV-ExtractModelArmorResponse</Name>
+  </Step>
+  <Step>
+    <Name>RF-RaiseFault</Name>
+    <Condition>(modelarmor.verdict == "MATCH_FOUND") or (modelarmor.verdict == "ERROR")</Condition>
+  </Step>
+</SharedFlow>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceCallout continueOnError="false" enabled="true" name="SC-SanitizePrompt">
+  <DisplayName>SC-SanitizePrompt</DisplayName>
+  <Properties/>
+  <Request clearPayload="true" variable="myRequest">
+    <Set>
+      <Headers>
+        <Header name="Accept">application/json</Header>
+      </Headers>
+      <Verb>POST</Verb>
+      <Payload contentType="application/json">
+        { 
+          "prompt": "{urirequest.prompt}",  
+          "model_armor_template_url": "{verifyapikey.VA-VerifyApiKey.apiproduct.ModelArmorTemplatePath}"
+        }
+      </Payload>
+    </Set>
+    <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+  </Request>
+  <Response>calloutResponse</Response>
+  <HTTPTargetConnection>
+    <Authentication>
+      <GoogleIDToken>
+        <Audience useTargetUrl="true"/>
+      </GoogleIDToken>
+    </Authentication>
+    <Properties/>
+    <URL>https://apigee-integration-154372397551.us-central1.run.app/sanitizePrompt</URL>
+  </HTTPTargetConnection>
+</ServiceCallout>

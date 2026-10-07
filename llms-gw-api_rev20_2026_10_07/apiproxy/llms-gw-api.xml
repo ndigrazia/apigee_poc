@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="20" name="llms-gw-api">
+  <DisplayName/>
+  <Description/>
+  <CreatedAt>1791397103174</CreatedAt>
+  <LastModifiedAt>1791397103174</LastModifiedAt>
+  <BasePaths>/v1/llms-gw-api</BasePaths>
+  <Policies>
+    <Policy>KVM-GetGeminiAPIKey</Policy>
+    <Policy>AM-Gemini</Policy>
+    <Policy>VA-VerifyApiKey</Policy>
+    <Policy>AM-RemoveApiKey</Policy>
+    <Policy>SA-SpikeArrest</Policy>
+    <Policy>EV-Extract-Inputs</Policy>
+    <Policy>RF-MissingInputs</Policy>
+    <Policy>Q-DynamicQuota</Policy>
+    <Policy>RF-TooManyRequests</Policy>
+    <Policy>RF-QuotaExceeded</Policy>
+    <Policy>EV-TokenCounts</Policy>
+    <Policy>DC-LlmUsedTokens</Policy>
+    <Policy>FC-SanitizePrompt</Policy>
+    <Policy>AM-AssignMessageGemini</Policy>
+  </Policies>
+  <ProxyEndpoints>
+    <ProxyEndpoint>default</ProxyEndpoint>
+  </ProxyEndpoints>
+  <TargetEndpoints>
+    <TargetEndpoint>default</TargetEndpoint>
+  </TargetEndpoints>
+</APIProxy>

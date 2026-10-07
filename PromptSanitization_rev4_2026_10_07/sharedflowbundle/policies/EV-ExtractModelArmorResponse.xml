@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables continueOnError="false" enabled="true" name="EV-ExtractModelArmorResponse">
+  <DisplayName>EV-ExtractModelArmorResponse</DisplayName>
+  <Source>calloutResponse</Source>
+  <VariablePrefix>modelarmor</VariablePrefix>
+  <JSONPayload>
+    <Variable name="verdict">
+      <JSONPath>$.verdict</JSONPath>
+    </Variable>
+    <Variable name="message">
+      <JSONPath>$.message</JSONPath>
+    </Variable>
+  </JSONPayload>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</ExtractVariables>

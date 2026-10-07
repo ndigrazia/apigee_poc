@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DataCapture name="DC-LlmUsedTokens" continueOnError="false" enabled="true">
+  <DisplayName>DC-LlmUsedTokens</DisplayName>
+  <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+  <Capture>
+    <DataCollector>dc_llm_used_tokens</DataCollector>
+    <Collect ref="apigee.tokens_count"/>
+  </Capture>
+  <Condition>response.status.code = 200 </Condition>
+</DataCapture>

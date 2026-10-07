@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables continueOnError="false" enabled="true" name="EV-Extract-Inputs">
+  <DisplayName>EV-Extract-Inputs</DisplayName>
+  <JSONPayload>
+    <Variable name="prompt">
+      <JSONPath>$.prompt</JSONPath>
+    </Variable>
+    <Variable name="model">
+      <JSONPath>$.model</JSONPath>
+    </Variable>
+  </JSONPayload>
+  <VariablePrefix>urirequest</VariablePrefix>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <Source clearPayload="false">request</Source>
+</ExtractVariables>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage continueOnError="false" enabled="true" name="AM-Gemini">
+  <DisplayName>AM-Gemini</DisplayName>
+  <Properties/>
+  <Add>
+    <Headers>
+      <Header name="X-Api-Key">{private.gemini_apikey}</Header>
+      <!--<Header name="X-Max-Output-Tokens">50000</Header>-->
+      <Header name="X-Max-Output-Tokens">{verifyapikey.VA-VerifyApiKey.apiproduct.operation.attributes.max_output_tokens}</Header>
+    </Headers>
+    <QueryParams/>
+    <FormParams/>
+  </Add>
+  <Set>
+    <Payload contentType="application/json">
+          {
+              "model": "{urirequest.model}",
+              "prompt":"{urirequest.prompt}"
+          }
+      </Payload>
+  </Set>
+  <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+  <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

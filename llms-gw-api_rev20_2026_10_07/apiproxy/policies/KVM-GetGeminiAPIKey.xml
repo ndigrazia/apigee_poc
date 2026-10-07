@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<KeyValueMapOperations continueOnError="false" enabled="true" name="KVM-GetGeminiAPIKey">
+  <DisplayName>KVM-GetGeminiAPIKey</DisplayName>
+  <Scope>environment</Scope>
+  <Get assignTo="private.gemini_apikey" index="1">
+    <Key>
+      <Parameter>gemini_api_key</Parameter>
+    </Key>
+  </Get>
+</KeyValueMapOperations>

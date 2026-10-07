@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Quota continueOnError="false" enabled="true" name="Q-DynamicQuota" type="calendar">
+  <DisplayName>Q-DynamicQuota</DisplayName>
+  <Properties/>
+  <Identifier ref="verifyapikey.VA-VerifyApiKey.client_id"/>
+  <Interval ref="verifyapikey.VA-VerifyApiKey.apiproduct.developer.quota.interval">1</Interval>
+  <TimeUnit ref="verifyapikey.VA-VerifyApiKey.apiproduct.developer.quota.timeunit">minute</TimeUnit>
+  <Allow count="5" countRef="verifyapikey.VA-VerifyApiKey.apiproduct.developer.quota.limit"/>
+  <Distributed>true</Distributed>
+  <Synchronous>true</Synchronous>
+  <StartTime>2013-08-21 10:00:00</StartTime>
+</Quota>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+  <Description/>
+  <FaultRules/>
+  <Flows>
+    <Flow name="Gemini">
+      <Description/>
+      <Request>
+        <Step>
+          <Name>KVM-GetGeminiAPIKey</Name>
+        </Step>
+        <Step>
+          <Name>AM-Gemini</Name>
+        </Step>
+      </Request>
+      <Response/>
+      <Condition>(proxy.pathsuffix MatchesPath "/gemini") and (request.verb = "POST")</Condition>
+    </Flow>
+  </Flows>
+  <PreFlow name="PreFlow">
+    <Request>
+      <Step>
+        <Name>VA-VerifyApiKey</Name>
+      </Step>
+      <Step>
+        <Name>AM-RemoveApiKey</Name>
+      </Step>
+      <Step>
+        <Name>SA-SpikeArrest</Name>
+      </Step>
+      <Step>
+        <Name>EV-Extract-Inputs</Name>
+      </Step>
+      <Step>
+        <Name>RF-MissingInputs</Name>
+        <Condition> (urirequest.model Equals "") or (urirequest.model Equals null) or (urirequest.prompt Equals null) or (urirequest.prompt Equals "")</Condition>
+      </Step>
+      <Step>
+        <Name>FC-SanitizePrompt</Name>
+        <Condition>verifyapikey.VA-VerifyApiKey.apiproduct.ModelArmorTemplatePath != null</Condition>
+      </Step>
+      <Step>
+        <Name>Q-DynamicQuota</Name>
+      </Step>
+      <Step>
+        <Name>RF-TooManyRequests</Name>
+        <Condition> (message.content Like "*Spike arrest violation*")</Condition>
+      </Step>
+      <Step>
+        <Condition>message.content Like "*Rate limit quota violation*"</Condition>
+        <Name>RF-QuotaExceeded</Name>
+      </Step>
+    </Request>
+    <Response/>
+  </PreFlow>
+  <PostFlow name="PostFlow">
+    <Request/>
+    <Response>
+      <Step>
+        <Name>EV-TokenCounts</Name>
+      </Step>
+      <Step>
+        <Name>DC-LlmUsedTokens</Name>
+      </Step>
+    </Response>
+  </PostFlow>
+  <HTTPProxyConnection>
+    <BasePath>/v1/llms-gw-api</BasePath>
+    <Properties/>
+  </HTTPProxyConnection>
+  <RouteRule name="default">
+    <TargetEndpoint>default</TargetEndpoint>
+  </RouteRule>
+</ProxyEndpoint>
